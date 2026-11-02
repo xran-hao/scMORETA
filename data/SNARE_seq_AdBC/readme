@@ -1,0 +1,14 @@
+Please download the raw dataset and mouse GTF annotation files from the following links and place them directly into this directory:
+
+* **Raw Data Download:** https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE126074
+* **Mouse GTF Annotation (GENCODE vM23, mm10):** https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M23/gencode.vM23.annotation.gtf.gz
+
+* **Required Files in this Folder:**
+  * `GSE126074_AdBrainCortex_metadata.txt`
+  * `GSE126074_AdBrainCortex_SNAREseq_cDNA.barcodes.tsv.gz`
+  * `GSE126074_AdBrainCortex_SNAREseq_cDNA.counts.mtx.gz`
+  * `GSE126074_AdBrainCortex_SNAREseq_cDNA.genes.tsv.gz`
+  * `GSE126074_AdBrainCortex_SNAREseq_chromatin.barcodes.tsv.gz`
+  * `GSE126074_AdBrainCortex_SNAREseq_chromatin.counts.mtx.gz`
+  * `GSE126074_AdBrainCortex_SNAREseq_chromatin.peaks.tsv.gz`
+  * `gencode.vM23.annotation.gtf.gz`
