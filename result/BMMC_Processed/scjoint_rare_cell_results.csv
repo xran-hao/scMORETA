@@ -1,0 +1,14 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+BMMC_Processed,scJoint,B1 B,0.8034,0.8021,0.8028,1890
+BMMC_Processed,scJoint,CD16+ Mono,0.9274,0.9245,0.926,1894
+BMMC_Processed,scJoint,CD8+ T naive,0.6178,0.6166,0.6172,1012
+BMMC_Processed,scJoint,G/M prog,0.6808,0.6667,0.6737,1203
+BMMC_Processed,scJoint,HSC,0.7609,0.7155,0.7375,1072
+BMMC_Processed,scJoint,ID2-hi myeloid prog,0.6622,0.4537,0.5385,108
+BMMC_Processed,scJoint,ILC,0.5081,0.4108,0.4543,835
+BMMC_Processed,scJoint,Lymph prog,0.8325,0.8465,0.8395,1779
+BMMC_Processed,scJoint,MK/E prog,0.7512,0.7036,0.7266,884
+BMMC_Processed,scJoint,Normoblast,0.9372,0.9646,0.9507,1780
+BMMC_Processed,scJoint,Plasma cell,0.8825,0.8918,0.8871,379
+BMMC_Processed,scJoint,cDC2,0.8475,0.8219,0.8345,859
+BMMC_Processed,scJoint,pDC,0.9665,0.9437,0.955,1191

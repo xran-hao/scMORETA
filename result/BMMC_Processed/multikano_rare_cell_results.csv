@@ -1,0 +1,14 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+BMMC_Processed,MultiKano,B1 B,0.8046,0.8016,0.8031,1890
+BMMC_Processed,MultiKano,CD16+ Mono,0.9259,0.9102,0.918,1894
+BMMC_Processed,MultiKano,CD8+ T naive,0.6203,0.5682,0.5931,1012
+BMMC_Processed,MultiKano,G/M prog,0.6623,0.6259,0.6436,1203
+BMMC_Processed,MultiKano,HSC,0.739,0.7397,0.7394,1072
+BMMC_Processed,MultiKano,ID2-hi myeloid prog,0.6049,0.4537,0.5185,108
+BMMC_Processed,MultiKano,ILC,0.4488,0.3725,0.4071,835
+BMMC_Processed,MultiKano,Lymph prog,0.8239,0.8758,0.849,1779
+BMMC_Processed,MultiKano,MK/E prog,0.7384,0.6482,0.6904,884
+BMMC_Processed,MultiKano,Normoblast,0.9554,0.95,0.9527,1780
+BMMC_Processed,MultiKano,Plasma cell,0.8883,0.8813,0.8848,379
+BMMC_Processed,MultiKano,cDC2,0.8163,0.7916,0.8038,859
+BMMC_Processed,MultiKano,pDC,0.9544,0.9488,0.9516,1191
