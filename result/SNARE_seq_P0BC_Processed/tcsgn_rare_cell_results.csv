@@ -1,0 +1,3 @@
+Dataset,CellType,Precision,Recall,F1-Score,Support,Ratio(%)
+SNARE_seq_P0BC_Processed,Endo/Peri,0.8427,0.9036,0.8721,83,1.86
+SNARE_seq_P0BC_Processed,Lamp5,0.7959,0.907,0.8478,43,0.96
