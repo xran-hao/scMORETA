@@ -1,0 +1,5 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+Human_Fetal_Brain_Processed,MultiKano,IN3,0.9632,0.9632,0.9632,190
+Human_Fetal_Brain_Processed,MultiKano,IN4,0.9804,1.0,0.9901,50
+Human_Fetal_Brain_Processed,MultiKano,SP,1.0,1.0,1.0,31
+Human_Fetal_Brain_Processed,MultiKano,mGPC/OPC,0.9238,0.9238,0.9238,223

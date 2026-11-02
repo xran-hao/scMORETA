@@ -1,0 +1,5 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+Human_Fetal_Brain_Processed,MOGONET,IN3,0.9465,0.9316,0.939,190
+Human_Fetal_Brain_Processed,MOGONET,IN4,1.0,1.0,1.0,50
+Human_Fetal_Brain_Processed,MOGONET,SP,0.9688,1.0,0.9841,31
+Human_Fetal_Brain_Processed,MOGONET,mGPC/OPC,0.8313,0.9058,0.867,223

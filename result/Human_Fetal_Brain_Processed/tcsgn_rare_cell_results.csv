@@ -1,0 +1,5 @@
+Dataset,CellType,Precision,Recall,F1-Score,Support,Ratio(%)
+Human_Fetal_Brain_Processed,IN3,0.7722,0.7316,0.7514,190,2.12
+Human_Fetal_Brain_Processed,IN4,0.92,0.92,0.92,50,0.56
+Human_Fetal_Brain_Processed,SP,0.9677,0.9677,0.9677,31,0.35
+Human_Fetal_Brain_Processed,mGPC/OPC,0.798,0.7085,0.7506,223,2.48

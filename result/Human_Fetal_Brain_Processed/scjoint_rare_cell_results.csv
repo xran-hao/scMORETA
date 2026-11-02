@@ -1,0 +1,5 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+Human_Fetal_Brain_Processed,scJoint,IN3,0.9622,0.9368,0.9493,190
+Human_Fetal_Brain_Processed,scJoint,IN4,1.0,0.94,0.9691,50
+Human_Fetal_Brain_Processed,scJoint,SP,0.9677,0.9677,0.9677,31
+Human_Fetal_Brain_Processed,scJoint,mGPC/OPC,0.9186,0.9103,0.9144,223
