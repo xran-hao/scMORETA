@@ -1,0 +1,2 @@
+Dataset,Acc,F1,Kappa
+SNARE_seq_Cortex_Processed,0.8157,0.7767,0.7903
