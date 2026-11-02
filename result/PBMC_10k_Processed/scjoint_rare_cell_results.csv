@@ -1,0 +1,10 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+PBMC_10k_Processed,scJoint,CD4 TEM,0.8804,0.6434,0.7434,286
+PBMC_10k_Processed,scJoint,HSPC,1.0,0.7059,0.8276,17
+PBMC_10k_Processed,scJoint,MAIT,0.9167,0.8462,0.88,130
+PBMC_10k_Processed,scJoint,Naive B,0.96,0.768,0.8533,125
+PBMC_10k_Processed,scJoint,Plasma,1.0,0.75,0.8571,12
+PBMC_10k_Processed,scJoint,Treg,0.8525,0.6624,0.7455,157
+PBMC_10k_Processed,scJoint,cDC,0.982,0.9111,0.9452,180
+PBMC_10k_Processed,scJoint,gdT,0.7949,0.4336,0.5611,143
+PBMC_10k_Processed,scJoint,pDC,1.0,0.9796,0.9897,98
