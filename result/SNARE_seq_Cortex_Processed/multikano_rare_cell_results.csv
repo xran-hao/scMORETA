@@ -1,0 +1,15 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+SNARE_seq_Cortex_Processed,MultiKano,Clau,0.9444,0.8151,0.875,146
+SNARE_seq_Cortex_Processed,MultiKano,E3Rmst,0.523,0.3939,0.4494,231
+SNARE_seq_Cortex_Processed,MultiKano,E5Sulf1,0.634,0.435,0.516,223
+SNARE_seq_Cortex_Processed,MultiKano,E5Tshz2,0.8333,0.8235,0.8284,85
+SNARE_seq_Cortex_Processed,MultiKano,Endo,0.0,0.0,0.0,22
+SNARE_seq_Cortex_Processed,MultiKano,InN,0.8913,0.82,0.8542,100
+SNARE_seq_Cortex_Processed,MultiKano,InP,0.9618,0.9197,0.9403,274
+SNARE_seq_Cortex_Processed,MultiKano,InS,0.9436,0.8932,0.9177,206
+SNARE_seq_Cortex_Processed,MultiKano,InV,0.9,0.8372,0.8675,129
+SNARE_seq_Cortex_Processed,MultiKano,Mic,0.8409,0.5873,0.6916,63
+SNARE_seq_Cortex_Processed,MultiKano,OPC,0.9457,0.8878,0.9158,98
+SNARE_seq_Cortex_Processed,MultiKano,OliI,0.9545,0.7,0.8077,30
+SNARE_seq_Cortex_Processed,MultiKano,OliM,0.9297,0.8815,0.9049,270
+SNARE_seq_Cortex_Processed,MultiKano,Peri,0.0,0.0,0.0,19
