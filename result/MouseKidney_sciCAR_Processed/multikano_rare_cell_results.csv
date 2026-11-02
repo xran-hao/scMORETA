@@ -1,0 +1,7 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+MouseKidney_sciCAR_Processed,MultiKano,Active proliferating cells (Ki-67+),0.6364,0.2121,0.3182,66
+MouseKidney_sciCAR_Processed,MultiKano,Collecting  duct intercalated  cells,0.9375,0.9677,0.9524,186
+MouseKidney_sciCAR_Processed,MultiKano,Medullary collecting duct cells,0.8779,0.6647,0.7566,173
+MouseKidney_sciCAR_Processed,MultiKano,Paranephric body adipocyte,0.7647,0.3611,0.4906,72
+MouseKidney_sciCAR_Processed,MultiKano,Podocyte,0.7931,0.3067,0.4423,75
+MouseKidney_sciCAR_Processed,MultiKano,Stem cells (Kit+),0.9517,0.8263,0.8846,167
