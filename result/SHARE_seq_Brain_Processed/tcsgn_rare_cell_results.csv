@@ -1,0 +1,6 @@
+Dataset,CellType,Precision,Recall,F1-Score,Support,Ratio(%)
+SHARE_seq_Brain_Processed,EN07,0.9062,0.9355,0.9206,93,2.82
+SHARE_seq_Brain_Processed,EN08,0.8537,0.8861,0.8696,79,2.4
+SHARE_seq_Brain_Processed,EN09,0.8333,0.9701,0.8966,67,2.03
+SHARE_seq_Brain_Processed,IN04,0.8108,0.9091,0.8571,66,2.0
+SHARE_seq_Brain_Processed,IN05,0.8596,0.9608,0.9074,51,1.55
