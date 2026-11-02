@@ -1,6 +1,6 @@
-# Processed Dataset Notice & Reproduction Guide / 预处理数据集说明与生成指南
+# Processed Dataset Notice & Reproduction Guide
 
-Due to GitHub's file storage limitations (files exceeding 100 MB cannot be hosted directly), the preprocessed feature matrices and split arrays in `dataset/pre_data/` are **not included** in this repository.
+Due to GitHub's file storage limitations, the preprocessed feature matrices and split arrays in `dataset/pre_data/` are **not included** in this repository.
 
 You can easily generate all processed data files locally with a single script:
 
