@@ -1,0 +1,4 @@
+Model,Accuracy,Macro_F1,Kappa
+Multikano,0.6983,0.5492,0.6342
+scJoint,0.759,0.7087,0.7076
+MOGONET,0.8025,0.7237,0.7569
