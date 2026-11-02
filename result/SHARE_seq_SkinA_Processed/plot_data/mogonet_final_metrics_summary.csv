@@ -1,0 +1,2 @@
+Dataset,Acc,F1,Kappa
+SHARE_seq_SkinA_Processed,0.8308,0.7919,0.8121
