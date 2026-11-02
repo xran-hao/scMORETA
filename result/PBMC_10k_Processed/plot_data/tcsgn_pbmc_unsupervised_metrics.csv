@@ -1,0 +1,2 @@
+Dataset,Model,AvgBIO,NMI_cell,ARI_cell,ASW_cell
+PBMC_10k_Processed,T-CSGN,0.9182,0.9674,0.9783,0.809
