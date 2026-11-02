@@ -1,0 +1,12 @@
+Dataset,Model,CellType,Precision,Recall,F1-Score,Support
+SHARE_seq_SkinA_Processed,MOGONET,Dermal Papilla,0.9571,0.9621,0.9596,766
+SHARE_seq_SkinA_Processed,MOGONET,Dermal Sheath,0.902,0.9246,0.9132,398
+SHARE_seq_SkinA_Processed,MOGONET,Endothelial,0.9276,0.9266,0.9271,927
+SHARE_seq_SkinA_Processed,MOGONET,Granular,0.287,0.7388,0.4135,291
+SHARE_seq_SkinA_Processed,MOGONET,IRS,0.6819,0.7976,0.7353,672
+SHARE_seq_SkinA_Processed,MOGONET,Isthmus,0.7186,0.8636,0.7844,689
+SHARE_seq_SkinA_Processed,MOGONET,K6+ Bulge/Companion Layer,0.7691,0.9397,0.8459,514
+SHARE_seq_SkinA_Processed,MOGONET,Macrophage DC,0.4093,0.7376,0.5265,263
+SHARE_seq_SkinA_Processed,MOGONET,Melanocyte,0.866,0.8984,0.8819,187
+SHARE_seq_SkinA_Processed,MOGONET,Schwann Cell,0.125,0.4785,0.1982,163
+SHARE_seq_SkinA_Processed,MOGONET,Sebaceous Gland,0.8009,0.9558,0.8715,181
