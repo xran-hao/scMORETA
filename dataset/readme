@@ -1,0 +1,32 @@
+# Processed Dataset Notice & Reproduction Guide / 预处理数据集说明与生成指南
+
+Due to GitHub's file storage limitations (files exceeding 100 MB cannot be hosted directly), the preprocessed feature matrices and split arrays in `dataset/pre_data/` are **not included** in this repository.
+
+You can easily generate all processed data files locally with a single script:
+
+### Step 1. Ensure Raw Data is Downloaded
+Make sure you have downloaded the raw single-cell multi-omics datasets and placed them into the `data/` directory according to the file list provided in **Supplementary Table S2**. The directory structure should match:
+
+├── data/                                 # Raw multi-omics datasets (downloaded separately according to the file list in Table S2 in supplementary)
+│   ├── PBMC_10k/                         # 10x Multiome PBMC
+│   ├── BMMC/                             # NeurIPS 2021 Multiome BMMC
+│   ├── Human_Fetal_Brain/                # Chunked TSV multi-files
+│   ├── MouseKidney_sciCAR/               # sci-CAR triplet format
+│   ├── SHARE_seq_Brain/                  # SHARE-seq raw files
+│   ├── SHARE_seq_SkinA/                  # Dual h5ad format
+│   ├── SHARE_seq_SkinB/                  # Large-scale streaming files
+│   ├── SNARE_seq_AdBC/                   # Adult brain cortex MTX triplets
+│   ├── SNARE_seq_Cortex/                 # Dual h5ad format
+│   └── SNARE_seq_P0BC/                   # P0 brain cortex MTX triplets
+
+### Step 2. Run the Preprocessing Script
+python src/DataPreprocessing/preprocess_all_datasets.py
+
+What this script will automatically generate:
+  Top 2,000 highly variable genes (HVG) normalized expression matrices (RNA_matrix.npy).
+  GTF-aligned promoter-activity matrices from scATAC-seq (ATAC_gene_activity.npy).
+  Synchronized cell-type labels and mappings (Labels.npy, label_map.npy, gene_names.csv).
+  Synchronized 5-fold cross-validation split folders (fold_1/ ~ fold_5/) with cross-model compatible formats (*.npy, *.npz, *.txt).
+  Inter-donor subsets for BMMC (Source_Train_15078/ and Target_Test_19593/).
+
+Once executed, the complete dataset/pre_data/ folder structure will be generated and ready for model training and benchmarking.
