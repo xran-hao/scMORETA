@@ -1,5 +1,5 @@
 """
-Script Function: Processes 5-fold Out-of-Fold (OOF) predictions across 10 single-cell multi-omics datasets to generate harmonized, publication-ready Sankey diagrams showing prediction-to-ground-truth flow
+Script Function: Processes 5-fold Out-of-Fold (OOF) predictions across 10 single-cell multi-omics datasets to generate harmonized, publication-ready Sankey diagrams showing prediction-to-ground-truth flow.
 """
 import os
 import plotly.graph_objects as go
