@@ -15,8 +15,8 @@ plt.rcParams['axes.edgecolor'] = '#333333'
 plt.rcParams['axes.linewidth'] = 0.9
 
 DPI = 300
-data_dir = os.path.expanduser("~/scMORETA-main/result/PBMC_10k_Processed/plot_data")
-save_dir = os.path.expanduser("~/scMORETA-main/src/Figures_output")
+data_dir = os.path.expanduser("~/scMORETA/result/PBMC_10k_Processed/plot_data")
+save_dir = os.path.expanduser("~/scMORETA/src/Figures_output")
 os.makedirs(save_dir, exist_ok=True)
 
 LINE_COLORS = {
