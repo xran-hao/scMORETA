@@ -28,7 +28,7 @@ def seed_everything_strict(seed=42):
 seed_everything_strict(42)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-base_path = "/home/horizon/scMORETA-main/dataset/pre_data/PBMC_10k_Processed"
+base_path = "/home/horizon/scMORETA/dataset/pre_data/PBMC_10k_Processed"
 DROP_RATES = [0.5]
 SAVE_DIR = "Figures_output"
 os.makedirs(SAVE_DIR, exist_ok=True) 
