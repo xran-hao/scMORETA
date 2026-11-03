@@ -46,10 +46,10 @@ try:
 except ImportError as e:
     raise ImportError(f"error: {e}")
 
-source_path = os.path.expanduser("~/scMORETA-main/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Source_Train_15078")
-target_path = os.path.expanduser("~/scMORETA-main/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Target_Test_19593")
-out_dir = os.path.expanduser("~/scMORETA-main/result/BMMC_Processed/plot_data")
-preds_dir = os.path.expanduser("~/scMORETA-main/result/BMMC_Processed/predictions")
+source_path = os.path.expanduser("~/scMORETA/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Source_Train_15078")
+target_path = os.path.expanduser("~/scMORETA/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Target_Test_19593")
+out_dir = os.path.expanduser("~/scMORETA/result/BMMC_Processed/plot_data")
+preds_dir = os.path.expanduser("~/scMORETA/result/BMMC_Processed/predictions")
 os.makedirs(out_dir, exist_ok=True)
 os.makedirs(preds_dir, exist_ok=True)
 
