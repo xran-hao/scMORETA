@@ -94,11 +94,11 @@ GPU: NVIDIA TITAN V (12GB)
 CUDA Version: 12.8
 Environment Setup
 To reproduce scMORETA, we suggest creating an isolated Conda environment:
-  ### Create and activate a clean conda environment
+  #### Create and activate a clean conda environment
     conda create -n scmoreta python=3.9 -y
     conda activate scmoreta
 
-  ### Install required packages
+  #### Install required packages
     pip install -r requirements.txt
 
 ## 3. Workflow & Usage
@@ -264,24 +264,24 @@ Extracts partner genes associated with core topological hyperedges and performs 
 
 ### 4.2 Supplementary Figures Reproduction Instructions
 
-### Figure S1: Out-of-Fold Confusion Matrices across Eight Cohorts
+#### Figure S1: Out-of-Fold Confusion Matrices across Eight Cohorts
 * **Figure S1**: Row-normalized out-of-fold classification confusion matrices summarizing scMORETA across the remaining eight benchmark datasets (BMMC, SHARE_seq_SkinA, SHARE_seq_SkinB, SNARE_seq_Cortex, SNARE_seq_P0BC, SNARE_seq_AdBC, Human_Fetal_Brain, and MouseKidney_sciCAR).
   * Generated using `src/tcsgn_classify_test.py`, saved to `src/Figures_output/Figure2A_Confusion/OOF_WholeData_Confusion_Matrix_*.png/.svg`.
 
-### Figure S2: Latent Space UMAP Projections across Eight Cohorts
+#### Figure S2: Latent Space UMAP Projections across Eight Cohorts
 * **Figure S2**: 2D UMAP projections of the 64-dimensional latent representations learned by scMORETA across the remaining eight cohorts.
   * Generated using `src/tcsgn_classify_test.py` (with Procrustes alignment), saved to `src/Figures_output/Figure2B_Umap/BestModel_WholeData_UMAP_*.png/.svg`.
 
-### Figure S3: Alluvial Sankey Diagrams across Eight Cohorts
+#### Figure S3: Alluvial Sankey Diagrams across Eight Cohorts
 * **Figure S3**: Alluvial mapping diagrams illustrating assignment fidelity between predicted labels and ground-truth annotations across the remaining eight cohorts.
   * Generated using `src/Figure2C&supp3_sankey_10datasets.py`, saved to `src/Figures_output/Figure2C_Sankey/Sankey_OOF_*.png/.svg`.
 
-### Figure S4: Comparative Confusion Matrices across Nine Cohorts (Top ≤14 Populations)
+#### Figure S4: Comparative Confusion Matrices across Nine Cohorts (Top ≤14 Populations)
 * **Figure S4**: Row-normalized confusion matrices comparing scMORETA (Ours), scJoint, MOGONET, and MultiKano across the remaining nine cohorts (A to I sequentially: PBMC_10k, BMMC, SHARE_seq_Brain, SHARE_seq_SkinA, SHARE_seq_SkinB, SNARE_seq_Cortex, SNARE_seq_AdBC, SNARE_seq_P0BC, and Human_Fetal_Brain).
   * For datasets containing up to 14 cell types, all populations are presented; for datasets exceeding 14 types, the top 14 populations ranked by ascending relative abundance are displayed.
   * Generated using `src/plot_rare_confusion_matrices.py --dataset all`, saved to `Cell_Confusion_Matrices_Top14/Figure5_Confusion_Matrices_Top14_<Dataset>.png/.svg`.
 
-### Figure S5: Cross-Donor Zero-Shot Generalization on BMMC
+#### Figure S5: Cross-Donor Zero-Shot Generalization on BMMC
 * **Figure S5**: Comparative analysis of cross-donor zero-shot prediction performance on the BMMC dataset (trained exclusively on Donor 15078 and deployed onto completely unseen Donor 19593 across 19 shared cell types).
   * Generated using `src/tcsgn_donor_train.py` (alongside baseline cross-donor runners `src/run_baseline_donor.py` and `src/run_baseline_mogonet_donor.py`), saving the evaluation metrics to `result/BMMC_Processed/plot_data/tcsgn_inter_donor_results.csv`.
 
@@ -289,11 +289,11 @@ Extracts partner genes associated with core topological hyperedges and performs 
 
 ### 4.3 Supplementary Tables Reproduction Instructions
 
-### Table S1
+#### Table S1
 * **Table S1**: Generated using `src/DataPreprocessing/compute_dataset_metrics.py`. Run `python src/DataPreprocessing/compute_dataset_metrics.py --dataset all --save_path dataset_statistics_summary.csv` to calculate cell/gene/peak statistics, imbalance degrees, and sparsity across all 10 datasets.
 
-### Table S2
+#### Table S2
 * **Table S2**: Curated benchmark summary of data availability, accession IDs, and raw filenames across the 10 multimodal single-cell datasets (sourced from GEO and scGLUE database).
 
-### Table S3
+#### Table S3
 * **Table S3**: Generated using `src/run_GO_enrichment.py`. Run `python src/run_GO_enrichment.py` to extract candidate gene modules from the global hypergraph incidence matrix, perform Gene Ontology (GO) Biological Process functional enrichment via Enrichr, and export statistical significance (`-log10(Adjusted P-value)`), module member genes, and overlapping pathway-specific genes for the top-ranked regulatory modules (saved as `src/Figures_output/Top10_Modules_Genes_Summary.csv`).
