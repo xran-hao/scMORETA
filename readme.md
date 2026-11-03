@@ -52,7 +52,7 @@ We propose **scMORETA**, a topological deep learning framework designed for robu
 │   │   ├── compute_dataset_metrics.py         # Profile and complexity statistics calculator
 │   │   ├── extract_inter_donor_data.py        # BMMC cross-donor data extraction utility
 │   │   └── dataset_statistics_summary.csv     # Output summary table (Table S1)
-│   ├── Cell_Confusion_Matrices_Top14/         # Top ≤14 populations comparative confusion matrices (Figure 5 & S4)
+│   ├── Cell_Confusion_Matrices_Top14/         # Top ≤14 populations comparative confusion matrices (Figure 5 & Figure S4)
 │   ├── Figures_output/                        # High-resolution (300 DPI) publication-ready PNG & SVG figures
 │   │   ├── Figure2A_Confusion                 # Row-normalized out-of-fold classification confusion matrices
 │   │   ├── Figure2B_Umap                      # Latent space UMAP projections
@@ -70,8 +70,8 @@ We propose **scMORETA**, a topological deep learning framework designed for robu
 │   ├── tcsgn_donor_train.py                   # BMMC cross-donor zero-shot generalization training (Figure S5)
 │   ├── donor_global_adj.py                    # Cross-donor topological hypergraph generator
 │   ├── tcsgn_rarecell_analysis.py             # Rare cell (<3%) identification & evaluation
-│   ├── plot_rare_confusion_matrices.py        # Top ≤14 comparative confusion matrix generator (Figure 5 & S4)
-│   ├── tcsgn_resilience_analysis.py           # IRS scoring, lineage dynamics & mechanisms (Figure 6D-F, 7A, 8A-B)
+│   ├── plot_rare_confusion_matrices.py        # Top ≤14 comparative confusion matrix generator (Figure 5 & Figure S4)
+│   ├── tcsgn_resilience_analysis.py           # IRS scoring, lineage dynamics & mechanisms (Figure 6D-F, Figure 7A, Figure 8A-B)
 │   ├── tcsgn_insilico_pertubation.py          # In silico gene knockdown perturbation (Figure 6C)
 │   ├── plot_paper_resilience_figure.py        # Multi-model stress degradation curves (Figure 6A-B)
 │   ├── tcsgn_sankey_compensation.py           # Hyperedge regulatory compensation flow Sankey (Figure 7B)
