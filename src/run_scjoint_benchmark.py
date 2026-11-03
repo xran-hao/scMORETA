@@ -32,19 +32,19 @@ from util.model_regress import Net_encoder, Net_cell
 print("Successfully imported official Net_encoder and Net_cell via native import")
 
 DATASETS = [
-    "../scMORETA-main/dataset/pre_data/BMMC_Processed",
-    "../scMORETA-main/dataset/pre_data/PBMC_10k_Processed",
-    "../scMORETA-main/dataset/pre_data/MouseKidney_sciCAR_Processed",
-    "../scMORETA-main/dataset/pre_data/SHARE_seq_Brain_Processed",
-    "../scMORETA-main/dataset/pre_data/SHARE_seq_SkinA_Processed",
-    "../scMORETA-main/dataset/pre_data/SHARE_seq_SkinB_Processed",
-    "../scMORETA-main/dataset/pre_data/SNARE_seq_Cortex_Processed",
-    "../scMORETA-main/dataset/pre_data/SNARE_seq_AdBC_Processed",
-    "../scMORETA-main/dataset/pre_data/SNARE_seq_P0BC_Processed",
-    "../scMORETA-main/dataset/pre_data/Human_Fetal_Brain_Processed"
+    "../scMORETA/dataset/pre_data/BMMC_Processed",
+    "../scMORETA/dataset/pre_data/PBMC_10k_Processed",
+    "../scMORETA/dataset/pre_data/MouseKidney_sciCAR_Processed",
+    "../scMORETA/dataset/pre_data/SHARE_seq_Brain_Processed",
+    "../scMORETA/dataset/pre_data/SHARE_seq_SkinA_Processed",
+    "../scMORETA/dataset/pre_data/SHARE_seq_SkinB_Processed",
+    "../scMORETA/dataset/pre_data/SNARE_seq_Cortex_Processed",
+    "../scMORETA/dataset/pre_data/SNARE_seq_AdBC_Processed",
+    "../scMORETA/dataset/pre_data/SNARE_seq_P0BC_Processed",
+    "../scMORETA/dataset/pre_data/Human_Fetal_Brain_Processed"
 ]
 
-def run_scjoint_5fold_eval(data_path, out_root="../scMORETA-main/result", epochs=100, batch_size=32, lr=1e-4, stress_test=False):
+def run_scjoint_5fold_eval(data_path, out_root="../scMORETA/result", epochs=100, batch_size=32, lr=1e-4, stress_test=False):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     base_name = os.path.basename(os.path.normpath(data_path))
 
@@ -69,7 +69,7 @@ def run_scjoint_5fold_eval(data_path, out_root="../scMORETA-main/result", epochs
 
         fold_dir = pathjoin(data_path, f'fold_{k_fold}')
         if not os.path.exists(fold_dir):
-            raise FileNotFoundError(f"Cannot find {fold_dir}, please make sure 5-fold slices are generated in scMORETA-main")
+            raise FileNotFoundError(f"Cannot find {fold_dir}, please make sure 5-fold slices are generated in scMORETA")
 
         if os.path.exists(pathjoin(fold_dir, 'train_rna.npy')):
             X_train = np.load(pathjoin(fold_dir, 'train_rna.npy')).astype(np.float32)
@@ -265,8 +265,8 @@ def run_scjoint_5fold_eval(data_path, out_root="../scMORETA-main/result", epochs
 def get_parser():
     parser = argparse.ArgumentParser(description="Official scJoint 5-Fold Benchmark Runner")
     parser.add_argument('-all', action='store_true', help='Enable this to automatically run all 10 datasets')
-    parser.add_argument('-expr', type=str, default='../scMORETA-main/dataset/pre_data/PBMC_10k_Processed', help='Path to a single dataset')
-    parser.add_argument('-outdir', type=str, default='../scMORETA-main/result', help='Output root directory')
+    parser.add_argument('-expr', type=str, default='../scMORETA/dataset/pre_data/PBMC_10k_Processed', help='Path to a single dataset')
+    parser.add_argument('-outdir', type=str, default='../scMORETA/result', help='Output root directory')
     parser.add_argument('-epoch', type=int, default=100, help='Number of training epochs')
     parser.add_argument('-bs', '--batch_size', type=int, default=32, help='Batch size')
     parser.add_argument('--stress_test', action='store_true', help='Enable multi-gradient transcriptome dropout stress test for resilience')
