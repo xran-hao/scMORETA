@@ -2,12 +2,12 @@
 
 > **Nomenclature Note**: The proposed method was previously designated as **T-CSGN** (Topological Cell-Specific Graph Network) during internal development. In the associated manuscript, it has been officially renamed to **scMORETA**. Please note that identifiers such as `TCSGN`, `tcsgn`, `CSGNet`, and related model checkpoint names in this repository refer to **scMORETA**.
 
-## Project Overview
+## 1. Project Overview
 We propose **scMORETA**, a topological deep learning framework designed for robust single-cell multi-omics (scRNA-seq and scATAC-seq) cell-type annotation and molecular resilience profiling. Rooted in the biological principle of epigenetic priming, scMORETA leverages Mapper-based Topological Data Analysis (TDA) to construct high-order chromatin accessibility hypergraphs, while dynamically specializing context-specific regulatory subnetworks via individual gene expression. Integrated with supervised contrastive learning and cell-specific hypergraph convolutions, scMORETA consistently achieves superior classification accuracy, Macro-F1, and Cohen's Kappa across 10 diverse single-cell multi-omics datasets. Furthermore, it establishes an in silico transcriptomic stress-testing paradigm and introduces the Identity Resilience Score (IRS), enabling quantitative profiling of cellular identity destabilization and mechanistic decoding of functional regulatory modules governing cellular robustness under severe transcriptomic perturbations.
 
 ---
 
-## Project Directory Structure
+### 1.1 Project Directory Structure
 
 ```
 ├── data/                                      # Raw multi-omics datasets (downloaded separately)
@@ -88,21 +88,21 @@ We propose **scMORETA**, a topological deep learning framework designed for robu
 └── README.md                                  # Project documentation
 ```
 
-## Installation & Environment Setup
+## 2. Installation & Environment Setup
 Hardware & OS Requirements
 Operating System: Ubuntu 24.04.4 LTS
 GPU: NVIDIA TITAN V (12GB)
 CUDA Version: 12.8
 Environment Setup
 To reproduce scMORETA, we suggest creating an isolated Conda environment:
-  # 1. Create and activate a clean conda environment
-  conda create -n scmoreta python=3.9 -y
-  conda activate scmoreta
+  # Create and activate a clean conda environment
+    conda create -n scmoreta python=3.9 -y
+    conda activate scmoreta
 
-  # 2. Install required packages
-  pip install -r requirements.txt
+  # Install required packages
+    pip install -r requirements.txt
 
-## Workflow & Usage
+## 3. Workflow & Usage
 
 ### 3.1 Data Collection and Preprocessing
 
@@ -228,9 +228,9 @@ Quantifies the dynamic hyperedge activation intensities across all cell lineages
 
 ---
 
-## Figure Reproduction Instructions
+## 4. Figure Reproduction Instructions
 
-### Main Figures
+### 4.1 Main Figures
 
 #### Figure 2: Classification Performance and Manifold Representation
 * **Figure 2(A)**: Row-normalized out-of-fold confusion matrices for representative datasets (left: PBMC_10k; right: SHARE_seq_Brain) generated via `src/tcsgn_classify_test.py`, saved to `src/Figures_output/Figure2A_Confusion/OOF_WholeData_Confusion_Matrix_*.png/.svg`.
@@ -271,7 +271,7 @@ Quantifies the dynamic hyperedge activation intensities across all cell lineages
 
 ---
 
-## Supplementary Figures Reproduction Instructions
+### 4.2 Supplementary Figures Reproduction Instructions
 
 ### Figure S1: Out-of-Fold Confusion Matrices across Eight Cohorts
 * **Figure S1**: Row-normalized out-of-fold classification confusion matrices summarizing scMORETA across the remaining eight benchmark datasets (BMMC, SHARE_seq_SkinA, SHARE_seq_SkinB, SNARE_seq_Cortex, SNARE_seq_P0BC, SNARE_seq_AdBC, Human_Fetal_Brain, and MouseKidney_sciCAR).
@@ -296,7 +296,7 @@ Quantifies the dynamic hyperedge activation intensities across all cell lineages
 
 ---
 
-## Supplementary Tables Reproduction Instructions
+### 4.3Supplementary Tables Reproduction Instructions
 
 ### Table S1
 * **Table S1**: Generated using `src/DataPreprocessing/compute_dataset_metrics.py`. Run `python src/DataPreprocessing/compute_dataset_metrics.py --dataset all --save_path dataset_statistics_summary.csv` to calculate cell/gene/peak statistics, imbalance degrees, and sparsity across all 10 datasets.
