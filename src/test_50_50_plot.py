@@ -34,8 +34,8 @@ def seed_everything(seed=42):
 
 seed_everything(42)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-base_data_dir = os.path.expanduser("~/scMORETA-main/dataset/pre_data/PBMC_10k_Processed")
-output_dir = os.path.expanduser("~/scMORETA-main/result/PBMC_10k_Processed_50_50")
+base_data_dir = os.path.expanduser("~/scMORETA/dataset/pre_data/PBMC_10k_Processed")
+output_dir = os.path.expanduser("~/scMORETA/result/PBMC_10k_Processed_50_50")
 models_dir = pathjoin(output_dir, 'models')
 plot_dir = pathjoin(output_dir, 'eval_plots')
 os.makedirs(plot_dir, exist_ok=True)
