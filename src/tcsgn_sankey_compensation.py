@@ -11,8 +11,8 @@ import plotly.graph_objects as go
 from model import CSGNet
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-base_path = "/home/horizon/scMORETA-main/dataset/pre_data/PBMC_10k_Processed"
-raw_h5ad_path = "/home/horizon/scMORETA-main/data/PBMC_10k/10x-Multiome-Pbmc10k-RNA.h5ad"
+base_path = "/home/horizon/scMORETA/dataset/pre_data/PBMC_10k_Processed"
+raw_h5ad_path = "/home/horizon/scMORETA/data/PBMC_10k/10x-Multiome-Pbmc10k-RNA.h5ad"
 model_path = "../result/PBMC_10k_Processed/models/tcsgn_PBMC_10k_Processed_full_model1.pth"
 SAVE_DIR = "Figures_output"
 os.makedirs(SAVE_DIR, exist_ok=True)
