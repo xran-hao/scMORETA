@@ -24,9 +24,9 @@ os.environ["MKL_NUM_THREADS"] = "4"
 
 pathjoin = os.path.join
 
-source_path = os.path.expanduser("~/scMORETA-main/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Source_Train_15078")
-target_path = os.path.expanduser("~/scMORETA-main/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Target_Test_19593")
-out_dir = os.path.expanduser("~/scMORETA-main/result/BMMC_Processed/plot_data")
+source_path = os.path.expanduser("~/scMORETA/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Source_Train_15078")
+target_path = os.path.expanduser("~/scMORETA/dataset/pre_data/BMMC_Processed/InterDonor_BMMC/Target_Test_19593")
+out_dir = os.path.expanduser("~/scMORETA/result/BMMC_Processed/plot_data")
 os.makedirs(out_dir, exist_ok=True)
 
 def to_adata_optimized(rna, atac, labels):
