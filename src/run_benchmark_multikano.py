@@ -43,8 +43,8 @@ def seed_everything(seed=42):
         torch.backends.cudnn.benchmark = False
 seed_everything(42)
 
-BASE_DATA_DIR = os.path.expanduser("~/scMORETA-main/dataset/pre_data")
-BASE_RESULT_DIR = os.path.expanduser("~/scMORETA-main/result")
+BASE_DATA_DIR = os.path.expanduser("~/scMORETA/dataset/pre_data")
+BASE_RESULT_DIR = os.path.expanduser("~/scMORETA/result")
 
 DATASETS = [
     pathjoin(BASE_DATA_DIR, "BMMC_Processed"),
