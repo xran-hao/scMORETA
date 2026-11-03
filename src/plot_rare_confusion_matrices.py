@@ -17,8 +17,8 @@ plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial']
 plt.rcParams['axes.edgecolor'] = '#333333'
 plt.rcParams['axes.linewidth'] = 0.8
 
-BASE_DATA_DIR = os.path.expanduser("~/scMORETA-main/dataset/pre_data")
-BASE_RESULT_DIR = os.path.expanduser("~/scMORETA-main/result")
+BASE_DATA_DIR = os.path.expanduser("~/scMORETA/dataset/pre_data")
+BASE_RESULT_DIR = os.path.expanduser("~/scMORETA/result")
 OUTPUT_DIR = "Cell_Confusion_Matrices_Top14"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
