@@ -40,8 +40,8 @@ def seed_everything(seed=42):
         torch.backends.cudnn.benchmark = False
 
 seed_everything(42)
-base_data_dir = os.path.expanduser("~/scMORETA-main/dataset/pre_data/PBMC_10k_Processed")
-output_dir = os.path.expanduser("~/scMORETA-main/result/PBMC_10k_Processed_50_50")
+base_data_dir = os.path.expanduser("~/scMORETA/dataset/pre_data/PBMC_10k_Processed")
+output_dir = os.path.expanduser("~/scMORETA/result/PBMC_10k_Processed_50_50")
 models_dir = pathjoin(output_dir, 'models')
 os.makedirs(models_dir, exist_ok=True)
 
