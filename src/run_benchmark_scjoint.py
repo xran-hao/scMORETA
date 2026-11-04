@@ -158,10 +158,6 @@ def run_scjoint_5fold_eval(data_path, out_root="../scMORETA/result", epochs=100,
                 stress_all_folds_collector.append(record)
                 print(f"    Dropout {int(gamma*100):02d}% -> F1: {f1_g:.4f} | Acc: {acc_g:.4f}")
             
-            plot_save_dir = pathjoin(out_root, base_name, "plot_data")
-            os.makedirs(plot_save_dir, exist_ok=True)
-            pd.DataFrame(stress_fold_k).to_csv(pathjoin(plot_save_dir, f"scjoint_stress_results_fold{k_fold}.csv"), index=False)
-            
             preds = []
             with torch.no_grad():
                 for bx, by in test_loader:
@@ -186,49 +182,12 @@ def run_scjoint_5fold_eval(data_path, out_root="../scMORETA/result", epochs=100,
         test_metrics['Kappa'].append(kappa)
         print(f"Fold {k_fold} Result: Acc = {acc:.4f}, F1 = {f1:.4f}, Kappa = {kappa:.4f}")
 
-        np.save(pathjoin(preds_out_dir, f"scjoint_fold{k_fold}_preds.npy"), preds)
-        np.save(pathjoin(preds_out_dir, f"scjoint_fold{k_fold}_trues.npy"), y_test)
-
         all_oof_preds.extend(preds)
         all_oof_trues.extend(y_test)
 
     np.save(pathjoin(preds_out_dir, "scjoint_all_oof_preds.npy"), np.array(all_oof_preds))
     np.save(pathjoin(preds_out_dir, "scjoint_all_oof_trues.npy"), np.array(all_oof_trues))
     print(f"scJoint full-sample predicted labels saved to:\n {preds_out_dir}")
-
-    try:
-        all_labels_file = pathjoin(data_path, "Labels.npy")
-        label_map_file = pathjoin(data_path, "label_map.npy")
-        if os.path.exists(all_labels_file) and os.path.exists(label_map_file):
-            all_labels = np.load(all_labels_file)
-            load_data = np.load(label_map_file, allow_pickle=True)
-            label_map = {i: name for i, name in enumerate(load_data)} if isinstance(load_data, np.ndarray) and load_data.size > 1 else (load_data.item() if hasattr(load_data, 'item') else load_data)
-
-            unique, counts = np.unique(all_labels, return_counts=True)
-            rare_ids = [u for u, c in zip(unique, counts) if (c / len(all_labels)) < 0.03]
-
-            report = classification_report(all_oof_trues, all_oof_preds, output_dict=True, zero_division=0)
-            rare_records = []
-            for rid in rare_ids:
-                if str(rid) in report:
-                    m = report[str(rid)]
-                    rare_records.append({
-                        'Dataset': base_name,
-                        'Model': 'scJoint',
-                        'CellType': label_map.get(rid, f"Class_{rid}"),
-                        'Precision': round(m['precision'], 4),
-                        'Recall': round(m['recall'], 4),
-                        'F1-Score': round(m['f1-score'], 4),
-                        'Support': int(m['support'])
-                    })
-
-            if len(rare_records) > 0:
-                rare_df = pd.DataFrame(rare_records)
-                rare_csv_path = pathjoin(out_root, base_name, "scjoint_rare_cell_results.csv")
-                rare_df.to_csv(rare_csv_path, index=False)
-                print(f"scJoint rare cell identification results generated directly:\n {rare_csv_path}")
-    except Exception as e:
-        print(f"Warning occurred while automatically extracting rare cells: {e}")
 
     final_res = {k: np.mean(v) for k, v in test_metrics.items()}
     print(f"\n--- Final Average Results ---")

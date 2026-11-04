@@ -1,6 +1,0 @@
-Dataset,Model,CellType,Precision,Recall,F1-Score,Support
-SHARE_seq_Brain_Processed,MultiKano,EN07,0.9022,0.8925,0.8973,93
-SHARE_seq_Brain_Processed,MultiKano,EN08,0.8947,0.8608,0.8774,79
-SHARE_seq_Brain_Processed,MultiKano,EN09,0.8857,0.9254,0.9051,67
-SHARE_seq_Brain_Processed,MultiKano,IN04,0.8696,0.9091,0.8889,66
-SHARE_seq_Brain_Processed,MultiKano,IN05,0.8596,0.9608,0.9074,51

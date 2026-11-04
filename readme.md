@@ -69,7 +69,6 @@ We propose **scMORETA**, a topological deep learning framework designed for robu
 │   ├── test_50_50_plot.py                     # 50/50 representation evaluation & UMAP plotting (Figure 4)
 │   ├── tcsgn_donor_train.py                   # BMMC cross-donor zero-shot generalization training (Figure S5)
 │   ├── donor_global_adj.py                    # Cross-donor topological hypergraph generator
-│   ├── tcsgn_rarecell_analysis.py             # Rare cell (<3%) identification & evaluation
 │   ├── plot_rare_confusion_matrices.py        # Top ≤14 comparative confusion matrix generator (Figure 5 & Figure S4)
 │   ├── tcsgn_resilience_analysis.py           # IRS scoring, lineage dynamics & mechanisms (Figure 6D-F, Figure 7A, Figure 8A-B)
 │   ├── tcsgn_insilico_pertubation.py          # In silico gene knockdown perturbation (Figure 6C)
@@ -77,7 +76,7 @@ We propose **scMORETA**, a topological deep learning framework designed for robu
 │   ├── tcsgn_sankey_compensation.py           # Hyperedge regulatory compensation flow Sankey (Figure 7B)
 │   ├── run_GO_enrichment.py                   # Hyperedge regulatory module GO functional enrichment (Figure 7C, Table S3)
 │   ├── Figure2C&supp3_sankey_10datasets.py    # Alluvial Sankey mapping generator for 10 datasets (Figure 2C & Figure S3)
-│   ├── run_scjoint_benchmark.py               # Benchmark runner for scJoint
+│   ├── run_benchmark_scjoint.py               # Benchmark runner for scJoint
 │   ├── run_benchmark_mogonet.py               # Benchmark runner for MOGONET
 │   ├── run_benchmark_multikano.py             # Benchmark runner for MultiKano
 │   ├── run_baseline_donor.py                  # scJoint & MultiKano cross-donor baseline evaluation
@@ -159,9 +158,9 @@ Evaluates trained models across all 5 folds, computes Accuracy, Macro-F1, and Co
 
 Runs 5-fold cross-validation benchmarks across all 10 datasets for baseline models (scJoint, MOGONET, and MultiKano). Please clone each official repository and place our corresponding benchmark script into the designated directory before running:
 
-> **scJoint Benchmark:** (Clone from: https://github.com/SydneyBioX/scJoint, place `run_scjoint_benchmark.py` in `scJoint-main/`)
-> * Run single dataset (e.g., PBMC_10k): `python run_scjoint_benchmark.py -expr ../scMORETA-main/dataset/pre_data/PBMC_10k_Processed`
-> * Run all 10 datasets in batch: `python run_scjoint_benchmark.py -all`
+> **scJoint Benchmark:** (Clone from: https://github.com/SydneyBioX/scJoint, place `run_benchmark_scjoint.py` in `scJoint-main/`)
+> * Run single dataset (e.g., PBMC_10k): `python run_benchmark_scjoint.py -expr ../scMORETA-main/dataset/pre_data/PBMC_10k_Processed`
+> * Run all 10 datasets in batch: `python run_benchmark_scjoint.py -all`
 
 > **MOGONET Benchmark:** (Clone from: https://github.com/txWang/MOGONET, place `run_benchmark_mogonet.py` in `MOGONET-main/`)
 > * Run single dataset (e.g., PBMC_10k): `python run_benchmark_mogonet.py -expr ../scMORETA-main/dataset/pre_data/PBMC_10k_Processed`
@@ -230,7 +229,7 @@ Extracts partner genes associated with core topological hyperedges and performs 
 
 #### Figure 3: Benchmarking against Supervised Baseline Methods
 * **Figure 3(A-C)**: Comparative bar charts illustrating Accuracy (A), Macro-F1 (B), and Cohen's Kappa (C) across all 10 datasets against scJoint, MOGONET, and MultiKano.
-  * Generated using summary metrics from `src/tcsgn_classify_test.py`, `src/run_scjoint_benchmark.py`, `src/run_benchmark_mogonet.py`, and `src/run_benchmark_multikano.py`.
+  * Generated using summary metrics from `src/tcsgn_classify_test.py`, `src/run_benchmark_scjoint.py`, `src/run_benchmark_mogonet.py`, and `src/run_benchmark_multikano.py`.
   * Visualized and plotted using `src/plot/figure3.py`, which reads the compiled benchmark results and exports `figure3.png` and `figure3.svg`
 
 #### Figure 4: Unsupervised Benchmark Evaluation on PBMC 10k
@@ -276,7 +275,7 @@ Extracts partner genes associated with core topological hyperedges and performs 
 * **Figure S3**: Alluvial mapping diagrams illustrating assignment fidelity between predicted labels and ground-truth annotations across the remaining eight cohorts.
   * Generated using `src/Figure2C&supp3_sankey_10datasets.py`, saved to `src/Figures_output/Figure2C_Sankey/Sankey_OOF_*.png/.svg`.
 
-#### Figure S4: Comparative Confusion Matrices across Nine Cohorts (Top ≤14 Populations)
+#### Figure S4: Comparative Confusion Matrices across Nine Cohorts (Top ≤ 14 Populations)
 * **Figure S4**: Row-normalized confusion matrices comparing scMORETA (Ours), scJoint, MOGONET, and MultiKano across the remaining nine cohorts (A to I sequentially: PBMC_10k, BMMC, SHARE_seq_Brain, SHARE_seq_SkinA, SHARE_seq_SkinB, SNARE_seq_Cortex, SNARE_seq_AdBC, SNARE_seq_P0BC, and Human_Fetal_Brain).
   * For datasets containing up to 14 cell types, all populations are presented; for datasets exceeding 14 types, the top 14 populations ranked by ascending relative abundance are displayed.
   * Generated using `src/plot_rare_confusion_matrices.py --dataset all`, saved to `Cell_Confusion_Matrices_Top14/Figure5_Confusion_Matrices_Top14_<Dataset>.png/.svg`.

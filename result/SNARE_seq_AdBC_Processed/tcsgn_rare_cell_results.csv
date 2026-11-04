@@ -1,9 +1,0 @@
-Dataset,CellType,Precision,Recall,F1-Score,Support,Ratio(%)
-SNARE_seq_AdBC_Processed,Astro,0.9632,0.9874,0.9752,159,1.97
-SNARE_seq_AdBC_Processed,L6 IT.2,0.9703,0.9899,0.98,99,1.23
-SNARE_seq_AdBC_Processed,L6b,0.8158,0.747,0.7799,83,1.03
-SNARE_seq_AdBC_Processed,NP,0.942,0.9028,0.922,72,0.89
-SNARE_seq_AdBC_Processed,Oligo,0.9392,0.972,0.9553,143,1.78
-SNARE_seq_AdBC_Processed,Pvalb,0.9631,0.9721,0.9676,215,2.67
-SNARE_seq_AdBC_Processed,Sst,0.9515,0.9812,0.9662,160,1.99
-SNARE_seq_AdBC_Processed,Vip/Lamp5,0.8889,0.9343,0.911,137,1.7

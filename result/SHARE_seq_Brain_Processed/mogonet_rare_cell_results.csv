@@ -1,6 +1,0 @@
-Dataset,Model,CellType,Precision,Recall,F1-Score,Support
-SHARE_seq_Brain_Processed,MOGONET,EN07,0.8544,0.9462,0.898,93
-SHARE_seq_Brain_Processed,MOGONET,EN08,0.7528,0.8481,0.7976,79
-SHARE_seq_Brain_Processed,MOGONET,EN09,0.775,0.9254,0.8435,67
-SHARE_seq_Brain_Processed,MOGONET,IN04,0.8267,0.9394,0.8794,66
-SHARE_seq_Brain_Processed,MOGONET,IN05,0.6757,0.9804,0.8,51

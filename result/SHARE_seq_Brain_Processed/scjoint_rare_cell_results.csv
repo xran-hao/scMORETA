@@ -1,6 +1,0 @@
-Dataset,Model,CellType,Precision,Recall,F1-Score,Support
-SHARE_seq_Brain_Processed,scJoint,EN07,0.956,0.9355,0.9457,93
-SHARE_seq_Brain_Processed,scJoint,EN08,0.8452,0.8987,0.8712,79
-SHARE_seq_Brain_Processed,scJoint,EN09,0.8873,0.9403,0.913,67
-SHARE_seq_Brain_Processed,scJoint,IN04,0.9062,0.8788,0.8923,66
-SHARE_seq_Brain_Processed,scJoint,IN05,0.9074,0.9608,0.9333,51

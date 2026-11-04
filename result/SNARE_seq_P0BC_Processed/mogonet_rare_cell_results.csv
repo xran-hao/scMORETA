@@ -1,3 +1,0 @@
-Dataset,Model,CellType,Precision,Recall,F1-Score,Support
-SNARE_seq_P0BC_Processed,MOGONET,Endo/Peri,0.6,0.759,0.6702,83
-SNARE_seq_P0BC_Processed,MOGONET,Lamp5,0.4935,0.8837,0.6333,43

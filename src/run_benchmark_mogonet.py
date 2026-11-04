@@ -445,10 +445,7 @@ def run_mogonet_5fold_eval(data_path, out_root=BASE_RESULT_DIR, stress_test=Fals
         )
         if stress_k:
             for r in stress_k: r['Fold'] = k_fold; stress_all_folds_collector.append(r)
-            plot_dir_k = pathjoin(out_root, base_name, "plot_data")
-            os.makedirs(plot_dir_k, exist_ok=True)
-            pd.DataFrame(stress_k).to_csv(pathjoin(plot_dir_k, f"mogonet_stress_results_fold{k_fold}.csv"), index=False)
-        cost = time.time() - t0
+            cost = time.time() - t0
 
         acc = accuracy_score(y_true, y_pred)
         f1 = f1_score(y_true, y_pred, average='macro')
@@ -457,9 +454,6 @@ def run_mogonet_5fold_eval(data_path, out_root=BASE_RESULT_DIR, stress_test=Fals
         test_metrics['Acc'].append(acc)
         test_metrics['F1'].append(f1)
         test_metrics['Kappa'].append(kappa)
-
-        np.save(pathjoin(preds_out_dir, f"mogonet_fold{k_fold}_preds.npy"), y_pred)
-        np.save(pathjoin(preds_out_dir, f"mogonet_fold{k_fold}_trues.npy"), y_true)
 
         all_oof_preds.extend(y_pred)
         all_oof_trues.extend(y_true)
@@ -476,42 +470,6 @@ def run_mogonet_5fold_eval(data_path, out_root=BASE_RESULT_DIR, stress_test=Fals
     np.save(oof_preds_file, np.array(all_oof_preds))
     np.save(oof_trues_file, np.array(all_oof_trues))
     print(f"MOGONET full-sample 5-fold unbiased predicted labels saved to: {preds_out_dir}")
-
-    try:
-        from sklearn.metrics import classification_report
-        all_labels_file = pathjoin(data_path, "Labels.npy")
-        label_map_file = pathjoin(data_path, "label_map.npy")
-        
-        if os.path.exists(all_labels_file) and os.path.exists(label_map_file):
-            all_labels = np.load(all_labels_file)
-            load_data = np.load(label_map_file, allow_pickle=True)
-            label_map = {i: name for i, name in enumerate(load_data)} if isinstance(load_data, np.ndarray) and load_data.size > 1 else (load_data.item() if hasattr(load_data, 'item') else load_data)
-
-            unique, counts = np.unique(all_labels, return_counts=True)
-            rare_ids = [u for u, c in zip(unique, counts) if (c / len(all_labels)) < 0.03]
-
-            report = classification_report(all_oof_trues, all_oof_preds, output_dict=True, zero_division=0)
-            rare_records = []
-            for rid in rare_ids:
-                if str(rid) in report:
-                    m = report[str(rid)]
-                    rare_records.append({
-                        'Dataset': base_name,
-                        'Model': 'MOGONET',
-                        'CellType': label_map.get(rid, f"Class_{rid}"),
-                        'Precision': round(m['precision'], 4),
-                        'Recall': round(m['recall'], 4),
-                        'F1-Score': round(m['f1-score'], 4),
-                        'Support': int(m['support'])
-                    })
-
-            if len(rare_records) > 0:
-                rare_df = pd.DataFrame(rare_records)
-                rare_csv_path = pathjoin(out_root, base_name, "mogonet_rare_cell_results.csv")
-                rare_df.to_csv(rare_csv_path, index=False)
-                print(f"MOGONET rare cell identification results generated directly: {rare_csv_path}")
-    except Exception as e:
-        print(f"Warning occurred while automatically extracting rare cells: {e}")
 
     final_res = {k: np.mean(v) for k, v in test_metrics.items()}
     print(f" [{base_name}] MOGONET 5-Fold Final Performance Report:")
