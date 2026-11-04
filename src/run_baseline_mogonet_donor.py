@@ -340,7 +340,7 @@ def main():
     print(f"  • Accuracy:   {acc:.4f}")
     print(f"  • Macro-F1:   {f1:.4f}")
     print(f"  • Kappa:      {kappa:.4f}")
-    print(f"  • 耗时:       {cost:.1f}s")
+    print(f"  • time:       {cost:.1f}s")
     print("=" * 65)
 
     np.save(pathjoin(preds_dir, "mogonet_inter_donor_preds.npy"), y_pred)
