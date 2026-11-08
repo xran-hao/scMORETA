@@ -27,8 +27,8 @@ LINE_COLORS = {
 }
 
 BAR_PALETTE = {
-    'Intact (0% Dropout)': '#7C9D8E',      
-    '50% Dropout Stress':  '#D4A373'       
+    'Intact': '#7C9D8E',      
+    '50% critical stress':  '#D4A373'       
 }
 
 def load_and_parse_csv(filename, model_name):
@@ -59,8 +59,8 @@ for name in models_order:
     ax1.plot(sub['Dropout'], sub['Mean_F1'], marker='o', markersize=6.5, linewidth=2.4, label=name, color=LINE_COLORS[name])
 
 ax1.axvline(x=50, color='#888888', linestyle='--', linewidth=1.2, alpha=0.7)
-ax1.text(51, 0.47, '50% Critical Stress', color='#555555', fontsize=11, style='italic', fontweight='bold')
-ax1.set_xlabel("Transcriptomic Dropout Rate (%)", fontsize=12)
+ax1.text(51, 0.47, '50% critical stress', color='#555555', fontsize=11, style='italic', fontweight='bold')
+ax1.set_xlabel("Masked Proportion (%)", fontsize=12)
 ax1.set_ylabel("Macro-averaged F1 Score", fontsize=12)
 ax1.set_xticks([0, 10, 20, 30, 40, 50, 60, 70])
 ax1.set_ylim([0.3, 1.02])
@@ -70,7 +70,7 @@ sns.despine(ax=ax1)
 
 ax2 = axes[1]
 df_comp = df_all[df_all['Dropout'].isin([0.0, 50.0])].copy()
-df_comp['Condition'] = df_comp['Dropout'].map({0.0: 'Intact (0% Dropout)', 50.0: '50% Dropout Stress'})
+df_comp['Condition'] = df_comp['Dropout'].map({0.0: 'Intact', 50.0: '50% critical stress'})
 
 sns.barplot(
     x='Model', y='Mean_F1', hue='Condition', data=df_comp,
