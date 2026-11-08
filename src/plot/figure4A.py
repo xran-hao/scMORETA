@@ -8,7 +8,7 @@ methods = [
     'scMORETA (Test 50% Unseen)',
     'scGPT (fine-tuned)',
     'scGPT (from-scratch)',
-    'scGLUE',
+    'GLUE',
     'Seurat v4'
 ]
 
@@ -17,7 +17,7 @@ data = {
     'scMORETA (Test 50% Unseen)': [0.8340, 0.8760, 0.8880, 0.7380],
     'scGPT (fine-tuned)':         [0.7580, 0.8070, 0.8220, 0.6450],
     'scGPT (from-scratch)':       [0.7280, 0.7750, 0.7590, 0.6510],
-    'scGLUE':                     [0.7470, 0.8150, 0.8060, 0.6190],
+    'GLUE':                     [0.7470, 0.8150, 0.8060, 0.6190],
     'Seurat v4':                  [0.7220, 0.7840, 0.6910, 0.6910]
 }
 
