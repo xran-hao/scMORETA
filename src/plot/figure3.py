@@ -43,7 +43,7 @@ fig, axes = plt.subplots(3, 1, figsize=(16, 20))
 
 metrics_list = [
     ('Acc', acc_data),
-    ('Macro-F1', f1_data),
+    ('mF1', f1_data),
     ('Kappa', kappa_data)
 ]
 
