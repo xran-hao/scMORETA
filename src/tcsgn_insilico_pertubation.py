@@ -92,7 +92,7 @@ for rank, (target_gene, ax) in enumerate(zip(target_genes_list, axes), 1):
         p_text = "p ≈ 1.00 (n.s.)"
         
     df_plot = pd.DataFrame({
-        'Condition': ['Baseline (Wild Type)'] * len(prob_b_base) + [f'Knockout ({target_gene})'] * len(prob_b_ko),
+        'Condition': ['Original'] * len(prob_b_base) + [f'Knockdown'] * len(prob_b_ko),
         'Probability': np.concatenate([prob_b_base, prob_b_ko])
     })
 
@@ -122,15 +122,8 @@ for rank, (target_gene, ax) in enumerate(zip(target_genes_list, axes), 1):
         ha='center', va='center', fontsize=12, fontweight='medium', color='#4A2C11',
         bbox=dict(boxstyle='round,pad=0.5', facecolor='#F9F2EA', edgecolor='#D4A373', lw=1.1, alpha=0.9)
     )
-    ax.text(
-        0.5, 0.28, 
-        f"Retention Rate: {retention_pct:.2f}%\n(Δ = {-drop_pct:+.2f}%, {p_text})", 
-        ha='center', va='center', fontsize=12.5, color='#222222',
-        bbox=dict(boxstyle='round,pad=0.6', facecolor='#FFFFFF', edgecolor='#888888', linestyle='--', lw=1.1, alpha=0.95)
-    )
-    
     ax.set_title(f"{target_gene}", fontsize=15.5, pad=12)
-    ax.set_ylabel(f"Predicted Probability ({target_celltype})", fontsize=13.0,labelpad=8)
+    ax.set_ylabel(f"Predicted Probability", fontsize=13.0,labelpad=8)
     ax.set_xlabel("")
     ax.set_ylim(-0.02, 1.06)
     ax.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
@@ -152,8 +145,6 @@ for rank, (target_gene, ax) in enumerate(zip(target_genes_list, axes), 1):
               bbox=dict(boxstyle='round,pad=0.5', facecolor='#E8F1EC', edgecolor='#7C9D8E', lw=1.1, alpha=0.9))
     ax_s.text(1, 0.76, f"Mean: {ko_mean:.4f}\nMedian: {ko_median:.4f}", ha='center', va='center', fontsize=12.5, fontweight='medium', color='#4A2C11',
               bbox=dict(boxstyle='round,pad=0.5', facecolor='#F9F2EA', edgecolor='#D4A373', lw=1.1, alpha=0.9))
-    ax_s.text(0.5, 0.28, f"Retention Rate: {retention_pct:.2f}%\n(Δ = -{drop_pct:.2f}%, {p_text})", ha='center', va='center',
-              fontsize=12.5, color='#222222', bbox=dict(boxstyle='round,pad=0.6', facecolor='#FFFFFF', edgecolor='#888888', linestyle='--', lw=1.1, alpha=0.95))
     
     ax_s.set_title(f"{target_gene}", fontsize=15.5, pad=12)
     ax_s.set_ylabel(f"Predicted Probability ({target_celltype})", fontsize=13.0, labelpad=8)
