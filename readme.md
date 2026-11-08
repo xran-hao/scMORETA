@@ -1,4 +1,4 @@
-# scMORETA: Topological Hypergraph Learning for Cellular Identity Resolution and Resilience Profiling in Single-Cell Multi-Omics
+# scMORETA: Resilient cell type annotation for single-cell multi-omics profiles using cell-specific hyper-regulation network
 
 > **Nomenclature Note**: The proposed method was previously designated as **T-CSGN** (Topological Cell-Specific Graph Network) during internal development. In the associated manuscript, it has been officially renamed to **scMORETA**. Please note that identifiers such as `TCSGN`, `tcsgn`, `CSGNet`, and related model checkpoint names in this repository refer to **scMORETA**.
 
