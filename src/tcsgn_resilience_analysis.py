@@ -39,6 +39,11 @@ def save_dual_figures(fig_name):
     plt.savefig(png_path, dpi=300, bbox_inches='tight')
     plt.savefig(svg_path, dpi=300, bbox_inches='tight')
     print(f"saved: {png_path} and {svg_path}")
+
+def format_sci_latex(val, prec=2):
+    s = f"{val:.{prec}e}"
+    base, exp = s.split('e')
+    return f"{base} * 10^{{{int(exp)}}}"
     
 class MyDataset(Dataset):
     def __init__(self, rna, labels):
@@ -83,14 +88,14 @@ def plot_topological_fingerprint(model, adata, dataset_name, device):
     )
 
     cbar = hm.collections[0].colorbar
-    cbar.ax.set_ylabel("Regulatory Module Activation", fontsize=14)
+    cbar.ax.set_ylabel("Hyper-regulation module activation score", fontsize=14)
     cbar.ax.tick_params(labelsize=13)
     cbar.solids.set_rasterized(True)
     cbar.solids.set_edgecolor("face")
 
-    plt.xlabel("Hyperedge Index (Regulatory Modules)", fontsize=15)
+    plt.xlabel("Hyper-regulation module index", fontsize=15)
     plt.xticks(fontsize=14) 
-    plt.ylabel("Cell Lineages", fontsize=15)
+    plt.ylabel("Cell lineage", fontsize=15)
     plt.yticks(fontsize=14)
     plt.tight_layout()
     save_dual_figures(f"Figure7A_topological_fingerprint_{dataset_name}")
@@ -197,7 +202,7 @@ def run_global_analysis():
     for i, v in enumerate(type_resilience.values):
         ax_bar.text(v + 0.01, i, f"{v:.3f}", color='black', va='center', fontsize=14)
     #plt.title("Average Cellular Identity Resilience by Type\n(PBMC_10k)", fontsize=14)
-    plt.xlabel("Mean IRS Stability Rank (Higher is more Resilient)", fontsize=14)
+    plt.xlabel("Mean IRS ranking score", fontsize=14)
     plt.ylabel("Cell Type", fontsize=14)
     plt.yticks(fontsize=12) 
     plt.xticks(fontsize=12) 
@@ -217,10 +222,14 @@ def run_global_analysis():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.0, 5.8), sharey=True)
     
     def get_p_text(p):
-        if p < 0.001: return f"p = {p:.1e} (***)"
-        elif p < 0.01: return f"p = {p:.2e} (**)"
-        elif p < 0.05: return f"p = {p:.2e} (*)"
-        else: return f"p = {p:.2f} (n.s.)"
+        if p < 0.001:
+            return rf"$\mathit{{p}} = {format_sci_latex(p)}\ (***)$"
+        elif p < 0.01:
+            return rf"$\mathit{{p}} = {format_sci_latex(p)}\ (**)$"
+        elif p < 0.05:
+            return rf"$\mathit{{p}} = {format_sci_latex(p)}\ (*)$"
+        else:
+            return rf"$\mathit{{p}} = {p:.2f}\ (\mathrm{{n.s.}})$"
     sns.violinplot(x='cell_type', y='ISS_Stability_Rank', data=sub_cd4, 
                    order=cd4_lineage, palette=palette_cd4, ax=ax1, 
                    
@@ -235,7 +244,7 @@ def run_global_analysis():
     ax1.text(1.5, 0.95, get_p_text(p1), ha='center', va='bottom', fontsize=12)
     #ax1.set_title("CD4+ T Cell Lineage Dynamics", fontsize=12,pad=12)
     ax1.set_xlabel("")
-    ax1.set_ylabel("IRS Stability Rank", fontsize=13)
+    ax1.set_ylabel("IRS ranking score", fontsize=13)
     ax1.set_ylim(0.0, 1.05)
     ax1.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
     sns.violinplot(x='cell_type', y='ISS_Stability_Rank', data=sub_b, 
@@ -329,8 +338,10 @@ def run_global_analysis():
         ax1.invert_yaxis()
         ax1.axvline(0, color='black', lw=0.8, linestyle='--')
         #ax1.set_title("Key Discriminative Genes (Fragile vs. Resilient)", fontsize=12, pad=12)
-        ax1.set_xlabel("Z-score (Enriched in Fragile > 0 | Enriched in Resilient < 0)", fontsize=14)
+        ax1.set_xlabel("Z-score (Enriched in fragile > 0 | Enriched in resilient < 0)", fontsize=14)
         if not top_terms.empty:
+            import matplotlib.cm as cm
+            import matplotlib.colors as mcolors
             colors = plt.cm.YlOrRd(np.linspace(0.4, 0.85, len(top_terms)))
             bars = ax2.barh(range(len(top_terms)), top_terms['-log10(Adj.P)'], 
                             color=colors, edgecolor='#2b2b2b', linewidth=0.6, alpha=0.85)
@@ -339,6 +350,7 @@ def run_global_analysis():
                 ax2.text(val + 0.15, i, f"{val:.2f}", va='center', ha='left', 
                         fontsize=13, color='black', weight='normal')
             ax2.set_xlim(0, top_terms['-log10(Adj.P)'].max() * 1.18)
+
             formatted_terms = []
             for t in top_terms['Term']:
                 if ' (GO:' in t:
@@ -351,12 +363,23 @@ def run_global_analysis():
 
             ax2.set_yticks(range(len(top_terms)))
             ax2.set_yticklabels(formatted_terms, fontsize=13)
-            #ax2.set_title("Functional Vulnerability Pathways (Fragile Cells)", 
-                          #fontsize=12, pad=12)
-            ax2.set_xlabel("-log10(Adjusted P-value)", fontsize=14)
+            ax2.set_xlabel(r"$-\log_{10}(\mathrm{adj.}\ \mathit{p}\text{-value})$", fontsize=14)
             ax2.invert_yaxis()
+
+            p_min = top_terms['-log10(Adj.P)'].min()
+            p_max = top_terms['-log10(Adj.P)'].max()
+            cmap_match = mcolors.LinearSegmentedColormap.from_list('matched_ylorrd', colors[::-1])
+            norm = mcolors.Normalize(vmin=p_min, vmax=p_max)
+
+            sm = cm.ScalarMappable(norm=norm, cmap=cmap_match)
+            sm.set_array([])
+            cbar = fig.colorbar(sm, ax=ax2, pad=0.03, aspect=20, shrink=0.75, drawedges=False)
+            cbar.ax.set_ylabel(r"$-\log_{10}(\mathrm{adj.}\ \mathit{p}\text{-value})$", fontsize=12)
+            cbar.ax.tick_params(labelsize=11)
+            cbar.solids.set_rasterized(True)
         else:
             ax2.text(0.5, 0.5, "No significantly enriched GO terms found", ha='center', va='center')
+            
         for ax in [ax1, ax2]:
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)
@@ -418,8 +441,10 @@ def run_global_analysis():
     ax1.axvline(0, color='grey', linestyle='--', lw=0.8)
     ax1.axhline(pval_thresh, color='grey', linestyle='--', lw=0.8)
     #ax1.set_title("Transcriptomic Divergence (Volcano Plot)", fontsize=12, pad=36)
-    ax1.set_xlabel("log2(Fold Change: Fragile / Resilient)", fontsize=14)
-    ax1.set_ylabel("-log10(Adjusted P-value)", fontsize=14)
+    #ax1.set_xlabel("log2(Fold change: fragile / resilient)", fontsize=14)
+    #ax1.set_ylabel("-log10(adj.p-value)", fontsize=14)
+    ax1.set_xlabel(r"$\log_{2}(\mathrm{Fold\ change:\ fragile\ /\ resilient})$", fontsize=14)
+    ax1.set_ylabel(r"$-\log_{10}(\mathrm{adj.}\ \mathit{p}\text{-value})$", fontsize=14)
     ax1.legend(
         loc='lower left', 
         bbox_to_anchor=(0.0, 1.02), 
@@ -458,12 +483,20 @@ def run_global_analysis():
         markersize=7.5, zorder=6, label=None)
     r_val, p_val = pearsonr(x_vals, y_vals)
     
-    ax2.text(0.05, 0.08, f"Pearson R = {r_val:.3f}\nP = {p_val:.2e} (***)", 
+   #ax2.text(0.05, 0.08, f"Pearson r = {r_val:.3f}\np = {p_val:.2e} (***)", 
+             #transform=ax2.transAxes, fontsize=14,
+             #bbox=dict(boxstyle='round,pad=0.5', facecolor='#f5f5f5', edgecolor='#cccccc'))
+    p_sci = format_sci_latex(p_val, prec=2)
+    stat_text = (
+        f"Pearson $\\mathit{{r}} = {r_val:.3f}$\n"
+        f"$\\mathit{{p}} = {p_sci}\\ (***)$"
+    )
+    ax2.text(0.05, 0.08, stat_text, 
              transform=ax2.transAxes, fontsize=14,
              bbox=dict(boxstyle='round,pad=0.5', facecolor='#f5f5f5', edgecolor='#cccccc'))
     #ax2.set_title("Cellular Resilience vs. Inflammatory Stress", fontsize=12, pad=36)
-    ax2.set_xlabel("Interferon-γ (IFN-γ) Activation Score", fontsize=14)
-    ax2.set_ylabel("IRS Stability Rank", fontsize=14)
+    ax2.set_xlabel("Interferon-gamma activation score", fontsize=14)
+    ax2.set_ylabel("IRS ranking score", fontsize=14)
     ax2.set_ylim(0.0, 1.05)
     ax2.spines['top'].set_visible(False)
     ax2.spines['right'].set_visible(False)
