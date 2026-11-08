@@ -89,8 +89,8 @@ def evaluate_subset(latents, labels, split_name="Test"):
 
     sc.tl.umap(adata, min_dist=0.3, random_state=42)
     fig, axes = plt.subplots(1, 2, figsize=(15, 6))
-    sc.pl.umap(adata, color='celltype', ax=axes[0], show=False, title=f'{split_name} Set: Ground Truth', frameon=False)
-    sc.pl.umap(adata, color='Louvain_best', ax=axes[1], show=False, title=f'{split_name} Set: Louvain Clusters (res={best_res})', frameon=False)
+    sc.pl.umap(adata, color='celltype', ax=axes[0], show=False, title=f'{split_name} Set: Ground truth', frameon=False)
+    sc.pl.umap(adata, color='Louvain_best', ax=axes[1], show=False, title=f'{split_name} Set: Louvain clusters', frameon=False)
     plt.tight_layout()
     
     base_save_name = f'umap_{split_name.lower()}_comparison'
@@ -131,8 +131,8 @@ def main():
     train_labels = labels[tr_idx]
     test_latents = extract_features(model, raw_rna[te_idx])
     test_labels = labels[te_idx]
-    res_train = evaluate_subset(train_latents, train_labels, split_name="Train_50pct")
-    res_test = evaluate_subset(test_latents, test_labels, split_name="Test_50pct_Unseen")
+    res_train = evaluate_subset(train_latents, train_labels, split_name="Train_50%")
+    res_test = evaluate_subset(test_latents, test_labels, split_name="Test_50%")
     df_results = pd.DataFrame([res_train, res_test])
     print("=" * 60)
     print(df_results.to_string(index=False))
@@ -150,7 +150,7 @@ def main():
     plt.bar(x + width/2, [res_test[m] for m in metrics], width, label='Test Set (50% Unseen)', color='#D79B00')
     
     plt.ylabel('Score', fontsize=12)
-    plt.title('T-CSGN Representation Generalization (50% Train vs 50% Test)', fontsize=14)
+    #plt.title('T-CSGN Representation Generalization (50% Train vs 50% Test)', fontsize=14)
     plt.xticks(x, metrics, fontsize=12)
     plt.ylim(0, 1.05)
     plt.legend(frameon=True, fontsize=11)
