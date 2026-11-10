@@ -5,7 +5,7 @@ metrics = ['AvgBIO', 'NMI', 'ARI', 'ASW_cell']
 
 methods = [
     'scMORETA (Train 50%)',
-    'scMORETA (Test 50% Unseen)',
+    'scMORETA (Test 50% unseen)',
     'scGPT (fine-tuned)',
     'scGPT (from-scratch)',
     'GLUE',
@@ -14,7 +14,7 @@ methods = [
 
 data = {
     'scMORETA (Train 50%)':       [0.9290, 0.9930, 0.9930, 0.8000],
-    'scMORETA (Test 50% Unseen)': [0.8340, 0.8760, 0.8880, 0.7380],
+    'scMORETA (Test 50% unseen)': [0.8340, 0.8760, 0.8880, 0.7380],
     'scGPT (fine-tuned)':         [0.7580, 0.8070, 0.8220, 0.6450],
     'scGPT (from-scratch)':       [0.7280, 0.7750, 0.7590, 0.6510],
     'GLUE':                     [0.7470, 0.8150, 0.8060, 0.6190],
