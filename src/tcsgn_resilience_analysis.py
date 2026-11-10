@@ -1,5 +1,5 @@
 """
-Script Function: Cellular Identity Resilience (ISS) analysis, including topological fingerprint heatmap, global resilience UMAP projection, lymphocyte differentiation dynamics violin plots, and monocyte fragility mechanistic dissection (DEGs, GO enrichment, volcano plot, and inflammatory stress regression).
+Script Function: Cellular Identity Resilience Score (IRS) analysis, including topological fingerprint heatmap, global resilience UMAP projection, lymphocyte differentiation dynamics violin plots, and monocyte fragility mechanistic dissection (DEGs, GO enrichment, volcano plot, and inflammatory stress regression).
 """
 import os
 import random
@@ -43,7 +43,7 @@ def save_dual_figures(fig_name):
 def format_sci_latex(val, prec=2):
     s = f"{val:.{prec}e}"
     base, exp = s.split('e')
-    return f"{base} * 10^{{{int(exp)}}}"
+    return f"{base} \\times 10^{{{int(exp)}}}"
     
 class MyDataset(Dataset):
     def __init__(self, rna, labels):
@@ -203,7 +203,7 @@ def run_global_analysis():
         ax_bar.text(v + 0.01, i, f"{v:.3f}", color='black', va='center', fontsize=14)
     #plt.title("Average Cellular Identity Resilience by Type\n(PBMC_10k)", fontsize=14)
     plt.xlabel("Mean IRS ranking score", fontsize=14)
-    plt.ylabel("Cell Type", fontsize=14)
+    plt.ylabel("Cell type", fontsize=14)
     plt.yticks(fontsize=12) 
     plt.xticks(fontsize=12) 
     plt.xlim(0, 1.1)
@@ -236,8 +236,9 @@ def run_global_analysis():
                    inner='quartile', cut=2, linewidth=0.8)
     for i, ct in enumerate(cd4_lineage):
         m_val = sub_cd4[sub_cd4['cell_type'] == ct]['ISS_Stability_Rank'].mean()
-        ax1.text(i, m_val + 0.03, f"μ={m_val:.3f}", ha='center', va='bottom', 
+        ax1.text(i, m_val + 0.03, f"$\\mu = {m_val:.3f}$", ha='center', va='bottom', 
                  fontsize=12.5, color='#1a1a1a')
+        
     stat1, p1 = mannwhitneyu(sub_cd4[sub_cd4['cell_type'] == 'CD4 TCM']['ISS_Stability_Rank'],
                              sub_cd4[sub_cd4['cell_type'] == 'CD4 TEM']['ISS_Stability_Rank'])
     ax1.plot([1, 1, 2, 2], [0.91, 0.94, 0.94, 0.91], lw=1.0, c='k')
@@ -253,7 +254,7 @@ def run_global_analysis():
     
     for i, ct in enumerate(b_lineage):
         m_val = sub_b[sub_b['cell_type'] == ct]['ISS_Stability_Rank'].mean()
-        ax2.text(i, m_val + 0.03, f"μ={m_val:.3f}", ha='center', va='bottom', 
+        ax2.text(i, m_val + 0.03, f"$\\mu = {m_val:.3f}$", ha='center', va='bottom', 
                  fontsize=12.5, color='#1a1a1a')
 
     stat2, p2 = mannwhitneyu(sub_b[sub_b['cell_type'] == 'Naive B']['ISS_Stability_Rank'],
@@ -402,10 +403,10 @@ def run_global_analysis():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14.5, 6.2))
     logfc_thresh = 0.3
     pval_thresh = -np.log10(0.01)
-    deg_full['color'] = 'Not Sig'
-    deg_full.loc[(deg_full['logfoldchanges'] > logfc_thresh) & (deg_full['neg_log10_pval'] > pval_thresh), 'color'] = 'Enriched in Fragile'
-    deg_full.loc[(deg_full['logfoldchanges'] < -logfc_thresh) & (deg_full['neg_log10_pval'] > pval_thresh), 'color'] = 'Enriched in Resilient'
-    color_dict = {'Not Sig': '#e2e2e2', 'Enriched in Fragile': '#B85B56', 'Enriched in Resilient': '#7C9D8E'}
+    deg_full['color'] = 'Not sig'
+    deg_full.loc[(deg_full['logfoldchanges'] > logfc_thresh) & (deg_full['neg_log10_pval'] > pval_thresh), 'color'] = 'Enriched in fragile'
+    deg_full.loc[(deg_full['logfoldchanges'] < -logfc_thresh) & (deg_full['neg_log10_pval'] > pval_thresh), 'color'] = 'Enriched in resilient'
+    color_dict = {'Not sig': '#e2e2e2', 'Enriched in fragile': '#B85B56', 'Enriched in resilient': '#7C9D8E'}
     
     for c_name, c_color in color_dict.items():
         sub = deg_full[deg_full['color'] == c_name]
