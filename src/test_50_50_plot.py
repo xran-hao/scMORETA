@@ -89,8 +89,8 @@ def evaluate_subset(latents, labels, split_name="Test"):
 
     sc.tl.umap(adata, min_dist=0.3, random_state=42)
     fig, axes = plt.subplots(1, 2, figsize=(15, 6))
-    sc.pl.umap(adata, color='celltype', ax=axes[0], show=False, title=f'{split_name} Set: Ground truth', frameon=False)
-    sc.pl.umap(adata, color='Louvain_best', ax=axes[1], show=False, title=f'{split_name} Set: Louvain clusters', frameon=False)
+    sc.pl.umap(adata, color='celltype', ax=axes[0], show=False, title=f'{split_name}: Ground truth', frameon=False)
+    sc.pl.umap(adata, color='Louvain_best', ax=axes[1], show=False, title=f'{split_name}: Louvain clusters', frameon=False)
     plt.tight_layout()
     
     base_save_name = f'umap_{split_name.lower()}_comparison'
@@ -147,7 +147,7 @@ def main():
 
     plt.figure(figsize=(9, 5))
     plt.bar(x - width/2, [res_train[m] for m in metrics], width, label='Train Set (50%)', color='#6C8EBF')
-    plt.bar(x + width/2, [res_test[m] for m in metrics], width, label='Test Set (50% Unseen)', color='#D79B00')
+    plt.bar(x + width/2, [res_test[m] for m in metrics], width, label='Test Set (50% unseen)', color='#D79B00')
     
     plt.ylabel('Score', fontsize=12)
     #plt.title('T-CSGN Representation Generalization (50% Train vs 50% Test)', fontsize=14)
