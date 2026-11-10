@@ -278,13 +278,13 @@ def plot_four_methods_confusion_matrices(raw_input_name):
         ax.set_yticks(np.arange(n_selected) + 0.5)
         ax.set_yticklabels(formatted_labels, rotation=0, ha='right', fontsize=8.5)
 
-        ax.set_ylabel("True Cell Types", fontsize=11, labelpad=10)
-        ax.set_xlabel("Predicted Cell Types", fontsize=11, labelpad=10)
+        ax.set_ylabel("True cell types", fontsize=11, labelpad=10)
+        ax.set_xlabel("Predicted cell types", fontsize=11, labelpad=10)
 
     for empty_idx in range(len(plot_methods), 4):
         fig.delaxes(axes[empty_idx])
 
-    plt.suptitle(f"Confusion Matrices of Cell Populations - {display_name}", 
+    plt.suptitle(f"Confusion matrices of cell populations - {display_name}", 
                  fontsize=16.0, x=0.5, y=0.02, ha='center', fontweight='bold')
     plt.tight_layout()
     plt.subplots_adjust(top=0.93, bottom=0.11, left=0.10, right=0.95, hspace=0.45, wspace=0.48)
