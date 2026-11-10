@@ -1,0 +1,2 @@
+Dataset,Acc,F1,Kappa
+SNARE_seq_AdBC_Processed,0.8867,0.8802,0.8608
